@@ -1,0 +1,28 @@
+{
+  "name": "newnodeapp",
+  "version": "1.0.0",
+  "description": "a node app for displaying new articles in mostly static page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tim0Cc/newnodeapp.git"
+  },
+  "keywords": [
+    "article",
+    "display",
+    "of",
+    "choice"
+  ],
+  "author": "Tim0Cc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tim0Cc/newnodeapp/issues"
+  },
+  "homepage": "https://github.com/Tim0Cc/newnodeapp#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
