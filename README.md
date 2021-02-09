@@ -9,4 +9,4 @@ This project is a training app to write server-side JS for integrating **dynamic
 	
 ## Technologies
 Project is created with:
-* node.js and express via npm
+* node.js and express via npm 
