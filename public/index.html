@@ -36,12 +36,20 @@
     } else {
       console.log('geloc is NOT available');
     }
+
+    // form to submit mood
+    const moodText = document.getElementById('mood_text');
+    moodText.submit(); 
+
   </script>
   <h1>Here we go, let's try node</h1>
 
   <p>latitude: <span id="latitude"></span>&deg;<br>
      longitude: <span id="longitude"></span>&deg;</p>
+  <form action="#" method="post" name="mood_form" id="form_mood">
+    <input type="text" name="mood" id="mood_text">
+    <button id="submitMood" name="submit_button" id="button_submit">submit</button>
+  </form>
 
-  <button id="submitButton">submit</button>
 </body>
 </html>
