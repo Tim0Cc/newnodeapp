@@ -6,47 +6,48 @@
   <title>This is my first node app</title>
 </head>
 <body>
-  <script>
-    // const form = document.getElementById('form_mood');
-    // const submitButton = document.getElementById('submit');
-
-    if ('geolocation' in navigator) {
-      console.log('geoloc is available');
-      navigator.geolocation.getCurrentPosition(async position => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        document.getElementById('latitude').textContent = lat;
-        document.getElementById('longitude').textContent = lon;
-
-        const data = { lat, lon };
-        const options = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        };
-        // async function onSubmit() {
-          const response = await fetch('/api', options);
-          const json = await response.json();
-          console.log(json);
-          // console.log('submiot function works')
-        // }
-        // submitButton.click = onSubmit;
-      });
-    } else {
-      console.log('geloc is NOT available');
-    }
-
-  </script>
   <h1>Here we go, let's try node</h1>
 
   <p>latitude: <span id="latitude"></span>&deg;<br>
      longitude: <span id="longitude"></span>&deg;</p>
-  <form action="/api" method="post" name="mood_form" id="form_mood">
-    <input type="text" name="mood" id="mood_text">
-    <input type="submit" id="submit" value="SUBMIT">
-  </form>
+  <!-- <form action="/api" method="post" name="mood_form" id="form_mood"> -->
+    <input type="text" name="txt" id="textID">
+    <button id="submit">SUBMIT </button>  
+  <!-- </form> -->
 
+  <script>
+    
+    let lat, lon;
+    const submitButton = document.getElementById('submit');
+    submitButton.addEventListener('click', async event => {
+      const text = document.getElementById('textID').value;
+      console.log(text);
+      const data = { lat, lon, text };
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      };
+      const response = await fetch('/api', options);
+      const json = await response.json();
+      console.log(json);
+      console.log('submit function works')
+    });
+    
+    if ('geolocation' in navigator) {
+      console.log('geoloc is available');
+      navigator.geolocation.getCurrentPosition(position => {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        console.log(lat, lon);
+        document.getElementById('latitude').textContent = lat;
+        document.getElementById('longitude').textContent = lon;
+      });
+    } else {
+      console.log('geloc is NOT available');
+    }
+  </script>
 </body>
 </html>
