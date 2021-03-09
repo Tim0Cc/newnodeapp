@@ -7,6 +7,7 @@
 </head>
 <body>
   <script>
+
     if ('geolocation' in navigator) {
       console.log('geoloc is available');
       navigator.geolocation.getCurrentPosition(async position => {
@@ -16,7 +17,6 @@
         document.getElementById('longitude').textContent = lon;
 
         const data = { lat, lon };
-        // console.log(`data ${data}`);
         const options = {
           method: 'POST',
           headers: {
@@ -24,31 +24,22 @@
           },
           body: JSON.stringify(data)
         };
-        document.getElementById("submitButton").onclick = async function () {
-          const response = await fetch('/api', options)
-          // .then(response => {
-          //   console.log(response);
-          // });
-          const json = await response.json();
-          console.log(json);
-        };
+        const response = await fetch('/api', options);
+        const json = await response.json();
+        console.log(json);
       });
     } else {
       console.log('geloc is NOT available');
     }
-
-    // form to submit mood
-    const moodText = document.getElementById('mood_text');
-    moodText.submit(); 
 
   </script>
   <h1>Here we go, let's try node</h1>
 
   <p>latitude: <span id="latitude"></span>&deg;<br>
      longitude: <span id="longitude"></span>&deg;</p>
-  <form action="#" method="post" name="mood_form" id="form_mood">
+  <form action="/api" method="post" name="mood_form" id="form_mood">
     <input type="text" name="mood" id="mood_text">
-    <button id="submitMood" name="submit_button" id="button_submit">submit</button>
+    <input type="submit" value="SUBMIT">
   </form>
 
 </body>

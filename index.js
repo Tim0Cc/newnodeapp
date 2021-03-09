@@ -5,6 +5,9 @@ const Datastore = require('nedb');
 
 const app = express();
 app.listen(3000, () => console.log('Listening to Port 3000'));
+// app.use(express.urlencoded({
+//   extended: true;
+// }))
 app.use(express.static('public'));
 app.use(express.json({limit: '100kb'}));
 
