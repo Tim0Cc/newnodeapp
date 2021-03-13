@@ -12,12 +12,25 @@
      longitude: <span id="longitude"></span>&deg;</p>
   <form action="/api" method="get" name="mood_form" id="form_mood">
     <input type="text" name="txt" id="textID">
-    <button id="submit">SUBMIT </button>  
+    <input type="submit" id="submit" value=SUBMit>  
   </form>
 
   <script>
-    
     let lat, lon;
+    
+    if ('geolocation' in navigator) {
+      console.log('geoloc is available');
+      navigator.geolocation.getCurrentPosition(position => {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        console.log(lat, lon);
+        document.getElementById('latitude').textContent = lat;
+        document.getElementById('longitude').textContent = lon;
+      });
+    } else {
+      console.log('geloc is NOT available');
+    }
+    
     const submitButton = document.getElementById('submit');
     submitButton.addEventListener('click', async event => {
       const text = document.getElementById('textID').value;
@@ -35,19 +48,6 @@
       console.log(json);
       console.log('submit function works')
     });
-    
-    if ('geolocation' in navigator) {
-      console.log('geoloc is available');
-      navigator.geolocation.getCurrentPosition(position => {
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
-        console.log(lat, lon);
-        document.getElementById('latitude').textContent = lat;
-        document.getElementById('longitude').textContent = lon;
-      });
-    } else {
-      console.log('geloc is NOT available');
-    }
   </script>
 </body>
 </html>
